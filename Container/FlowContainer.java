@@ -5,15 +5,18 @@ import java.util.List;
 
 public class FlowContainer extends Container {
 
-    
-    private List<Component> elements;
+    protected List<Component> elements;
 
 
     public FlowContainer(){
         elements = new ArrayList<Component>();
 
     }
-
+    
+    public FlowContainer(Border border){
+        super(border);
+        elements = new ArrayList<Component>();
+    }
 
     @Override
     public void addComponent(Component c) {
@@ -29,8 +32,12 @@ public class FlowContainer extends Container {
 
     @Override
     public void doLayout() {
-        
+        if(border != null){
+            border.generateBorder();
+        }
+        System.out.println("Usando flow container");
     }
+
 
 }
 

@@ -14,12 +14,20 @@ public class GridContainer extends Container {
 
     private int contadorColuna;
 
+    
 
     public GridContainer(int altura, int largura) {
         elementsArray = new Component [altura][largura];
         this.altura = altura;
         this.largura = largura;
     }
+    public GridContainer(int altura, int largura, Border border) {
+        super(border);
+        elementsArray = new Component [altura][largura];
+        this.altura = altura;
+        this.largura = largura;
+    }
+
     public void addComponent(Component c){
 
         if(contadorLinha == altura && contadorColuna == largura ){
@@ -53,7 +61,11 @@ public class GridContainer extends Container {
 
     @Override
     public void doLayout() {
+        if(border != null){
+            border.generateBorder();
+        }
         System.out.println(Arrays.deepToString(elementsArray));
         System.out.println("Usando GridContainer");
     }
+        
 }
